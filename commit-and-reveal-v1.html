@@ -11,6 +11,7 @@
         
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
+        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
         
         <script src="./commit-and-reveal.js" defer></script>
     </head>
@@ -87,7 +88,7 @@
                <h2>How to Play "Who stole the cookie from the cookie jar</h2>
                    
                    <iframe width="420" height="315"
-src="https://www.youtube.com/embed/tgbNymZ7vqY">
+src="https://vimeo.com/276045361/3660b5fee7">
 </iframe>
                 <p>
                     
@@ -117,7 +118,7 @@ src="https://www.youtube.com/embed/tgbNymZ7vqY">
         <li>Player/s Share & Player/s Steal – All stealing players win. Stealing players split the pot.</li>
         <li>Player/s Share & Player/s Block – All blocking players are eliminated. The game continues onto the next round with remaining players.</li>
         <li>Player/s Steal & Player/s Block – All stealing players are eliminated. The game continues onto the next round with remaining players.</li>
-        <li>>Player/s Steal & Player/s Share & Player/s Block – All stealing players are eliminated. The game continues onto the next round with remaining players. </li>
+        <li>Player/s Steal & Player/s Share & Player/s Block – All stealing players are eliminated. The game continues onto the next round with remaining players. </li>
 
                    </p>
             
@@ -179,7 +180,8 @@ src="https://www.youtube.com/embed/tgbNymZ7vqY">
          
         document.getElementById("timer").innerText=hours+":"+minutes+":"+seconds
         
-        interest=interest+Math.floor(Math.random()*100);
+        interest=interest+Math.floor(Math.random()*10);
+        
         document.getElementById("jackpot").innerText="$"+interest.toFixed(2).replace(/\d(?=(\d{3})+.)/g, '$&,');
        
 
