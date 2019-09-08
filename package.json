@@ -1,0 +1,14 @@
+{
+  "name": "SweepStake",
+  "version": "1.0.0",
+  "description": "Probably the best game made at ETHBoston",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Parker, John, Olena, Wade",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^7.1.2"
+  }
+}
