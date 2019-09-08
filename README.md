@@ -2,6 +2,8 @@
 
 ## An exciting game where you can backstab your friends and win money!
 
+![Screenshot](screen.png)
+
 ## Components
 
 ### UI
