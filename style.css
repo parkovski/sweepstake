@@ -1,15 +1,13 @@
-
 html {
   font-size: 14px;
-  font-family: 'Oxygen', sans-serif;
- 
+  font-family: "Oxygen", sans-serif;
 }
 
-#app{
-    width: 500px;
-    height: 650px;
-    margin: 0 auto;
-     background-color: whitesmoke;
+#app {
+  width: 500px;
+  height: 650px;
+  margin: 0 auto;
+  background-color: whitesmoke;
 }
 
 /* Header */
@@ -20,73 +18,98 @@ header {
   background-color: #4c7ef3;
   color: #ffffff;
   text-transform: uppercase;
-    padding: 5px;
-    margin-bottom: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
 .logo {
-  
-    height: 50px;
-    width: auto;
-    border-color:  #4c7ef3;
+  height: 50px;
+  width: auto;
+  border-color: #4c7ef3;
 }
 
 h1 {
   flex: 1;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   font-size: 1.43rem;
   font-weight: 900;
   letter-spacing: 0.3px;
 }
-
 
 #jackpot {
   flex: 1;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   font-size: 1.43rem;
   font-weight: 900;
   letter-spacing: 0.3px;
 }
 
-h2, a {
-    font-weight: bold;
-    font-size: 1.2em;
-    font-family: Calibri, sans-serif;   
-    padding: 1em;
+h2,
+a {
+  font-weight: bold;
+  font-size: 1.2em;
+  font-family: Calibri, sans-serif;
+  padding: 1em;
 }
 
-#plans, #actions{
-    background-color: lightgrey;   
-    margin: 1em;
-    position: relative;
- 
+#plans,
+#actions {
+  background-color: lightgrey;
+  margin: 1em;
+  position: relative;
 }
 #steakholders {
-   background-color: lightgrey;   
-    margin: 1em;
-    padding: 0 1em 1em;
+  background-color: lightgrey;
+  margin: 1em;
+  padding: 0 1em 1em;
 }
 
-.red, .grey {
-  height: 25px;
-  width: 25px;
+#results {
+  background-color: lightgrey;
+  margin: 1em;
+  padding: 0 1em 1em;
+}
+
+#my-results {
+  text-align: center;
+}
+
+.red {
+  height: 15px;
+  width: 15px;
   background-color: red;
   border-radius: 50%;
   display: inline-block;
-    margin: 5px
+  margin: 2px;
 }
 
-#reveal{
-    display: flex;
+.green {
+  height: 15px;
+  width: 15px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 2px;
 }
 
-#steak{
-    width: 30%;
-    height: 300px;
-    margin: 1em;
-    background-color: lightgrey;
+.grey {
+  height: 15px;
+  width: 15px;
+  background-color: grey;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 2px;
+}
 
+#reveal {
+  display: flex;
+}
 
+#steak {
+  width: 30%;
+  height: 300px;
+  margin: 1em;
+  background-color: lightgrey;
 }
 
 .time {
@@ -106,7 +129,7 @@ h2, a {
 input,
 textarea,
 select {
-  padding: .71rem;
+  padding: 0.71rem;
   margin-right: 1.21rem;
   background-color: #ffffff;
   border: solid 1px #979797;
@@ -127,16 +150,16 @@ select {
 }
 
 label {
-  margin-bottom: .71rem;
+  margin-bottom: 0.71rem;
   font-weight: bold;
 }
 
-ul{
-    padding: 1em 2em;
+ul {
+  padding: 1em 2em;
 }
 
 legend {
-  margin-bottom: .71rem;;
+  margin-bottom: 0.71rem;
   font-weight: bold;
 }
 
@@ -144,8 +167,8 @@ legend {
   border: 1px solid #fa4359;
 }
 
-p{
-    padding: 1em;
+p {
+  padding: 1em;
 }
 
 .form-row {
@@ -172,7 +195,7 @@ p{
 }
 
 .checkbox > * {
-  margin-bottom: .71rem;
+  margin-bottom: 0.71rem;
 }
 
 .checkbox input {
@@ -188,28 +211,28 @@ p{
 }
 
 .agreement fieldset > * {
-  margin-bottom: .71rem;
+  margin-bottom: 0.71rem;
 }
 
 .signature {
-  font-family: 'Petit Formal Script', cursive;
+  font-family: "Petit Formal Script", cursive;
 }
 
 button {
   cursor: pointer;
-  padding: .85rem 2.29rem;
+  padding: 0.85rem 2.29rem;
   border-radius: 4px;
   margin-right: 1.36rem;
   background-color: #4c7ef3;
   font-size: 1.14rem;
   color: #ffffff;
-    width: 100px;
-  transition: .25s;
+  width: 100px;
+  transition: 0.25s;
 }
 
 button:hover {
   background-color: #1e5df1;
-    width: 100px;
+  width: 100px;
 }
 
 button.reset {
@@ -220,33 +243,31 @@ button.reset:hover {
   background-color: #ea2e16;
 }
 
-#about{
-    margin: 20px;
+#about {
+  margin: 20px;
 }
 
-#notes{
-    border: 1px solid green;
-    margin: 5px;
-    padding: 5px;
-    width: 300px;
-    
+#notes {
+  border: 1px solid green;
+  margin: 5px;
+  padding: 5px;
+  width: 300px;
 }
 
-header img{
-   
-    height: 50px;
-    width: auto;
-    border-color:  #4c7ef3;
+header img {
+  height: 50px;
+  width: auto;
+  border-color: #4c7ef3;
 }
 
-iframe{
-    margin: 0 10%;
-    width: 80%;
+iframe {
+  margin: 0 10%;
+  width: 80%;
 }
 
-#home img{
-    width: 100%;
-    margin: auto;
+#home img {
+  width: 100%;
+  margin: auto;
 }
 
 button.active:hover {
@@ -276,17 +297,14 @@ button.focus {
   background-color: lightcoral;
 }
 
-
-
-
-
-button, button:hover {
+button,
+button:hover {
   cursor: default;
-  padding: .85rem 0.29rem;
+  padding: 0.85rem 0.29rem;
   border-radius: 4px;
   margin-right: 1.36rem;
   background-color: gray;
   font-size: 1.14rem;
   color: #ffffff;
-  transition: .25s;
+  transition: 0.25s;
 }

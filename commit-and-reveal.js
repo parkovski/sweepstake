@@ -3,15 +3,19 @@
      data:{
          username: 'Alex',
          bio: 'I am from Boston.',
-         players:[0,1,2,0,0,0,2,1,1,0,2,2,2,2,2,2,0,1,1,2,0,0,0,1],   
-         jackpot: "10,000",
+         players:[0,1,2,0,0,0,2,1,1,0,2,2,2,2,2,2,0,1,1,2,0,0,0,1,0,2,2,2,2,2,2,1,0,0,0,0,0,2,2,2,2,1,1,0,1,1,1,1,1,0,2,1,2,1,0],   
+         jackpot: 0,
          newNote: '',
          notes: ['9.1.2019: won $153.18', '9.10.19: won $189.21'],
          plans:'',
          move: '',
          active: 'active',
          focus: 'focus',
-         revealed: 'revealed'
+         revealed: 'revealed',
+         red: 'red',
+         green: 'green',
+         grey: 'grey',
+         result: 'Continue playing'
      },
      computed:{
          
@@ -51,7 +55,8 @@
           $("#actions").hide();
           $("#reveal").hide();    
           $("#rules").show();
-              $("#about").hide();   
+              $("#about").hide();  
+             $("#results").hide();   
              return true;
          },
          
@@ -61,7 +66,8 @@
           $("#actions").show();
           $("#reveal").show();    
           $("#rules").hide();
-              $("#about").hide();   
+              $("#about").hide();
+             $("#results").hide();   
              return true;
          },
         
@@ -71,7 +77,29 @@
           $("#actions").hide();
           $("#reveal").hide();    
           $("#rules").hide();
-          $("#about").show();   
+          $("#about").show(); 
+             $("#results").hide();   
+             return true;
+         },
+         
+          showResults: function(move){
+              this.move=move;
+              if (move=='steal') {
+                  this.result="Someone cought you! Game over."
+              }
+              
+               if (move=='share') {
+                  this.result="Someone stole the bank! Game over."
+              }
+              
+               if (move=='block') {
+                  this.result="No one stole! Game over."
+              }
+         
+          $("#reveal").hide();  
+              $("#results").show();
+              
+           
              return true;
          },
          
@@ -81,11 +109,27 @@
           $("#actions").hide();
           $("#reveal").hide();    
           $("#rules").hide();
-          $("#about").hide();   
+          $("#about").hide();  
+             $("#results").hide();   
              return true;
-         }
+         },
          
+     
          
-         
-     }
+        addStakes: function () {
+      var v = Math.floor(Math.random()*3);
+            var t=this;
+            
+      setInterval(function () {
+           v = Math.floor(Math.random()*3);
+        t.players.push(v)
+    }, 1000);
+   }
+     
+     },
+     
+     mounted () {
+  this.addStakes()
+}
+
  });

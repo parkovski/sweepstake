@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Commit and Reveal</title>
        
-       <<link rel="stylesheet" href="./reset.css"> 
+       <link rel="stylesheet" href="./reset.css"> 
         <link rel="stylesheet" href="./style.css"> 
         
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
@@ -16,6 +16,7 @@
     </head>
     <body>
        <div id="app">
+        
             <header>
                 <a href="#" v-bind:class="showHome" @click="showHome"> <img class="logo" src="./notes1.png" alt="logo"> </a>
                 <span id="jackpot"> ${{jackpot}} </span>
@@ -36,9 +37,9 @@
                   
                 <div id="form">
              
-                <button v-on:click="plans='steal';"  v-bind:class="[{active: true}, plans=='steal' ? focus : '']">Steal </button>
-                      <button v-on:click="plans='share';"  v-bind:class="[{active: true}, plans=='share' ? focus : '']">Share </button>
-                      <button v-on:click="plans='block';"  v-bind:class="[{active: true},plans=='block' ? focus : '']">Block </button>
+                <button v-on:click="plans='steal'; plans=='' ? players.push(0) : players[players.length-1]=0; addStake"  v-bind:class="[{active: true}, plans=='steal' ? focus : '']">Steal </button>
+                      <button v-on:click="plans='share'; plans=='' ? players.push(1) : players[players.length-1]=1"  v-bind:class="[{active: true}, plans=='share' ? focus : '']">Share </button>
+                      <button v-on:click="plans='block'; plans=='' ? players.push(2) : players[players.length-1]=2"  v-bind:class="[{active: true},plans=='block' ? focus : '']">Block </button>
                 </div>
             
                 
@@ -51,9 +52,9 @@
                
                 <div id="form">
              
-                <button v-on:click="move='steal';" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='steal' ? focus : '']">Steal </button>
-                      <button v-on:click="move='share';" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='share' ? focus : '']">Share </button>
-                      <button v-on:click="move='block';" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='block' ? focus : '']">Block </button>
+                <button v-on:click="showResults('steal')" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='steal' ? focus : '']">Steal </button>
+                      <button v-on:click="showResults('share')" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='share' ? focus : '']">Share </button>
+                      <button v-on:click="showResults('block')" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='block' ? focus : '']">Block </button>
                 </div>
             
                 
@@ -64,13 +65,22 @@
                <h2>Stakeholders</h2>
                 
                 
-                <span v-for="dotClass in dotClasses">
-                   <span v-bind:class="{ red: dotClass!=='red' }" ></span>
+                <span v-for="player in players">
+                   <span v-bind:class="[player==0 ? red : '' , player==1 ? green : '', player==2 ? grey : '']" ></span>
                 </span>
                
                </div>
            
            
+           </div>
+               
+               <div id="results" style="display: none">
+                
+               <h2>Your  Results</h2>
+                    <div id="my-results">
+             <h1>YOU {{move}} </h1>
+                   <h1> {{result}} </h1>
+                   </div>
            </div>
            
                <div id="rules" style="display: none">
@@ -179,6 +189,7 @@ src="https://www.youtube.com/embed/tgbNymZ7vqY">
         document.getElementById("days").innerText="00"
         document.getElementById("hours").innerText="00"
         document.getElementById("minutes").innerText="00"
+        players.push(1)
        
   }
      
