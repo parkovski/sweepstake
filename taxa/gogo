@@ -1,0 +1,9 @@
+#!/bin/bash
+if [[ "$1" == "" ]]; then
+        echo 'nah dawg you gotta be like ./this_script <method> <param>'
+        exit 1
+fi
+
+python genrequest.py "$2" "./${1}Request" "$1"
+cp ${1}Request ../server/${1}Request
+python decodeResponse.py "$(cd ../server && ./taxa_server pythonClassWithContext ../client/hack.cert /home/taxa/server game.py ${1}Request)"
