@@ -265,6 +265,11 @@ iframe {
   width: 80%;
 }
 
+video {
+  margin: 0 10%;
+  width: 80%;
+}
+
 #home img {
   width: 100%;
   margin: auto;
