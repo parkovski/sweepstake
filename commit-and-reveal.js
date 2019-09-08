@@ -71,7 +71,10 @@ const app = new Vue({
     red: "red",
     green: "green",
     grey: "grey",
-    result: "Continue playing"
+    result: "Continue playing",
+    focusSteal: "focus_steal",
+    focusShare: "focus_share",
+    focusBlock: "focus_block"
   },
   computed: {
     noteEmpty: function() {

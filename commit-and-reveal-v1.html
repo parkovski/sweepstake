@@ -37,9 +37,9 @@
                   
                 <div id="form">
              
-                <button v-on:click="plans='steal'; plans=='' ? players.push(0) : players[players.length-1]=0; addStake"  v-bind:class="[{active: true}, plans=='steal' ? focus : '']">Steal </button>
-                      <button v-on:click="plans='share'; plans=='' ? players.push(1) : players[players.length-1]=1"  v-bind:class="[{active: true}, plans=='share' ? focus : '']">Share </button>
-                      <button v-on:click="plans='block'; plans=='' ? players.push(2) : players[players.length-1]=2"  v-bind:class="[{active: true},plans=='block' ? focus : '']">Block </button>
+                <button v-on:click="plans='steal'; plans=='' ? players.push(0) : players[players.length-1]=0; addStake"  v-bind:class="[{active: true}, plans=='steal' ? focusSteal : '']">Steal </button>
+                      <button v-on:click="plans='share'; plans=='' ? players.push(1) : players[players.length-1]=1"  v-bind:class="[{active: true}, plans=='share' ? focusShare : '']">Share </button>
+                      <button v-on:click="plans='block'; plans=='' ? players.push(2) : players[players.length-1]=2"  v-bind:class="[{active: true},plans=='block' ? focusBlock : '']">Block </button>
                 </div>
             
                 
@@ -52,9 +52,9 @@
                
                 <div id="form">
              
-                <button v-on:click="showResults('steal')" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='steal' ? focus : '']">Steal </button>
-                      <button v-on:click="showResults('share')" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='share' ? focus : '']">Share </button>
-                      <button v-on:click="showResults('block')" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='block' ? focus : '']">Block </button>
+                <button v-on:click="showResults('steal')" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='steal' ? focusSteal : '']">Steal </button>
+                      <button v-on:click="showResults('share')" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='share' ? focusShare : '']">Share </button>
+                      <button v-on:click="showResults('block')" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='block' ? focusBlock : '']">Block </button>
                 </div>
             
                 

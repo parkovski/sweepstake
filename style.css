@@ -297,6 +297,33 @@ button.focus {
   background-color: lightcoral;
 }
 
+button.focus_steal:hover {
+  background-color: red;
+}
+
+button.focus_steal {
+  cursor: pointer;
+  background-color: lightcoral;
+}
+
+button.focus_share:hover {
+  background-color: forestgreen;
+}
+
+button.focus_share {
+  cursor: pointer;
+  background-color: greenyellow;
+}
+
+button.focus_block:hover {
+  background-color: grey;
+}
+
+button.focus_block {
+  cursor: pointer;
+  background-color: darkgray;
+}
+
 button,
 button:hover {
   cursor: default;
