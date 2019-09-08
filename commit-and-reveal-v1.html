@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Commit and Reveal</title>
+       
+       <<link rel="stylesheet" href="./reset.css"> 
+        <link rel="stylesheet" href="./style.css"> 
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
+        
+        <script src="./commit-and-reveal.js" defer></script>
+    </head>
+    <body>
+       <div id="app">
+            <header>
+                <a href="#" v-bind:class="showHome" @click="showHome"> <img class="logo" src="./notes1.png" alt="logo"> </a>
+                <span id="jackpot"> ${{jackpot}} </span>
+                <a href="#" v-bind:class="showMore" @click="showRules"> Rules</a>
+                <a href="#" v-bind:class="showPlay" @click="showPlay"> Play</a>
+              
+              
+                <a href="#" v-bind:class="showAccount" @click="showAccount"> <img src="1.png" alt="me" > </a>
+           </header>
+           <main>
+               
+               <div id="home">
+                   <img id="dai" src="dai.jpg">
+               </div>
+            
+            <div id="plans" style="display: none">
+               <h2>My plans for this round</h2>
+                  
+                <div id="form">
+             
+                <button v-on:click="plans='steal';"  v-bind:class="[{active: true}, plans=='steal' ? focus : '']">Steal </button>
+                      <button v-on:click="plans='share';"  v-bind:class="[{active: true}, plans=='share' ? focus : '']">Share </button>
+                      <button v-on:click="plans='block';"  v-bind:class="[{active: true},plans=='block' ? focus : '']">Block </button>
+                </div>
+            
+                
+               </div>
+           
+           <div id="actions" style="display: none">
+               <h2>My action for this round</h2>
+              
+               <span id="timer">Timer</span>
+               
+                <div id="form">
+             
+                <button v-on:click="move='steal';" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='steal' ? focus : '']">Steal </button>
+                      <button v-on:click="move='share';" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='share' ? focus : '']">Share </button>
+                      <button v-on:click="move='block';" v-bind:disabled="noteEmpty" v-bind:class="[{active: !noteEmpty}, move=='block' ? focus : '']">Block </button>
+                </div>
+            
+                
+               </div>
+           
+           <div id="reveal" style="display: none">
+            <div id="steakholders">
+               <h2>Stakeholders</h2>
+                
+                
+                <span v-for="dotClass in dotClasses">
+                   <span v-bind:class="{ red: dotClass!=='red' }" ></span>
+                </span>
+               
+               </div>
+           
+           
+           </div>
+           
+               <div id="rules" style="display: none">
+               <h2>How to Play "Who stole the cookie from the cookie jar</h2>
+                   
+                   <iframe width="420" height="315"
+src="https://www.youtube.com/embed/tgbNymZ7vqY">
+</iframe>
+                <p>
+                    
+<em>SweepStake!</em> is a modified prisoners dilemma where you must decide to share or steal a pot of DAI. </p>
+
+          <p>          <strong>Step 1</strong> – Under Account put in a stake to join a game. Each game costs 10 DAI.<br/>
+
+<strong>Step 2</strong> – You can tell other players how you are going to vote with the broadcast buttons. Pressing these buttons changes the color of the circle that represents you. However, you might not want to trust everything you see as lying is encouraged!</p>
+                    <ul>
+                        <li>Green =  I want to share.</li>
+<li>Red = I want to steal.</li>
+<li>Blue = I want to block.</li>
+                   </ul>
+
+<p> <strong>Step 3</strong> – Commit your action for the round before the time runs out. You can share, steal, or block (see How to Win/Lose below). If you do not take an action you will lose and are removed from the player pool.</p>
+
+<p><strong>Step 4</strong> – When the commit count down clock expires all players actions are revealed. Players then either win, lose, or play in the next round. If the game goes to another round the losing players are removed but the pot remains. Ultimately some player or players will win.</p>
+
+                   <h2>How to Win/Lose</h2>
+
+<p>There are 7 ways to win/lose at SweepStake! depending on what players do in a round:
+    <ul>
+
+        <li>All Players Share – Everyone wins. The pot is split between all players.</li>
+        <li>All Players Steal – Everyone Loses. No one wins the pot. The pot roles over to a new game.</li>
+        <li>All Players Block – Everyone Loses. No one wins the pot. The pot roles over to a new game.</li>
+        <li>Player/s Share & Player/s Steal – All stealing players win. Stealing players split the pot.</li>
+        <li>Player/s Share & Player/s Block – All blocking players are eliminated. The game continues onto the next round with remaining players.</li>
+        <li>Player/s Steal & Player/s Block – All stealing players are eliminated. The game continues onto the next round with remaining players.</li>
+        <li>>Player/s Steal & Player/s Share & Player/s Block – All stealing players are eliminated. The game continues onto the next round with remaining players. </li>
+
+                   </p>
+            
+                
+               </div>
+               
+                 <div id="about" style="display: none">
+            <h2> username: {{username}} </h2> 
+            <h2> bio: {{bio}}</h2> <br />
+            <div v-for="note in notes" id="notes">
+                <h4>{{ note }} </h4>             
+            </div>             
+               </div>
+           
+        </main>    
+        </div>
+            
+        <script>
+    // Set the date we're counting down to
+         var countDownDate = new Date("Oct 1, 2019 8:00:00").getTime();
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  
+    
+      document.getElementById("timer").innerText=hours+":"+minutes+":"+seconds
+          
+     var interest=0;
+
+    // Update the count down every 15 seconds
+    var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+       
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        if (seconds<10) {seconds="0"+seconds} 
+         if (minutes<10) {minutes="0"+minutes} 
+    
+         
+        document.getElementById("timer").innerText=hours+":"+minutes+":"+seconds
+        
+        interest=interest+Math.floor(Math.random()*100);
+        document.getElementById("jackpot").innerText="$"+interest.toFixed(2).replace(/\d(?=(\d{3})+.)/g, '$&,');
+       
+
+      // If the count down is finished, write some text 
+        if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("days").innerText="00"
+        document.getElementById("hours").innerText="00"
+        document.getElementById("minutes").innerText="00"
+       
+  }
+     
+}, 1000);
+</script>
+         <style>   
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+          height: 100%;
+          font: normal 16px 'Roboto', sans-serif;        
+        }
+
+        
+        .countdown-container ul{
+            list-style: none;
+            display: inline;
+            position:absolute;
+            top: 83px;
+            left: 33px;
+            margin: 0;
+            padding: 0;
+        
+        }
+        
+        .countdown-container {
+            display: flex;
+            font: 'Roboto', sans-serif;
+        }
+        
+        .countdown-container li{
+            display: inline-block;
+            font-size: 3em;
+            margin-right: 9px;
+            padding-left: 0;
+            width: 74px;
+            text-align: center;
+        }    
+        
+        span#timer, span#timer-1 {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            display: inline-block;
+            text-align: center;
+            font-size: 1.5em;        
+        }
+
+        
+       
+    </style>
+    
+           
+    </body>
+</html>
